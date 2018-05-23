@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pwa-scanner": {
+    "sw-test": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,18 +13,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pwa-scanner",
+            "outputPath": "dist/sw-test",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.json"
+              "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -44,26 +43,25 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
-              "serviceWorker": true
+              "buildOptimizer": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pwa-scanner:build"
+            "browserTarget": "sw-test:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pwa-scanner:build:production"
+              "browserTarget": "sw-test:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pwa-scanner:build"
+            "browserTarget": "sw-test:build"
           }
         },
         "test": {
@@ -79,8 +77,7 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.json"
+              "src/assets"
             ]
           }
         },
@@ -98,7 +95,7 @@
         }
       }
     },
-    "pwa-scanner-e2e": {
+    "sw-test-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -106,7 +103,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "pwa-scanner:serve"
+            "devServerTarget": "sw-test:serve"
           }
         },
         "lint": {
@@ -121,5 +118,5 @@
       }
     }
   },
-  "defaultProject": "pwa-scanner"
+  "defaultProject": "sw-test"
 }

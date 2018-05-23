@@ -1,14 +1,5 @@
-// Include angulat material theming
-@import '~@angular/material/_theming';
-
-// Include material icons
-@import url('//fonts.googleapis.com/icon?family=Material+Icons');
-
-// **Be sure that you only ever include this mixin once!**
-@include mat-core();
-
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
-
+@import '~@angular/material/theming';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 html, body {
   font-family: Roboto, Arial, sans-serif;
