@@ -1,0 +1,46 @@
+// Include angulat material theming
+@import '~@angular/material/_theming';
+
+// Include material icons
+@import url('//fonts.googleapis.com/icon?family=Material+Icons');
+
+// **Be sure that you only ever include this mixin once!**
+@include mat-core();
+
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+
+html, body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+  height: 100%;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+
+.viewport > canvas {
+  position: inherit;
+  width: 100% !important;
+  z-index: 99;
+}
+
+.viewport > video {
+  width: 100% !important;
+}
+
+.viewport {
+  position: relative;
+}
+
+
+// video {
+//   position: inherit;
+//   width: 100%;
+//   height: auto;
+// }
