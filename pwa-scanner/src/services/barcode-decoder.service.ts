@@ -9,19 +9,6 @@ export class BarcodeDecoderService {
 
   constructor() {}
 
-  onDecodeSingle(src) {
-    DECODER_CONFIG.src = src;
-    // Promisify DecodeSingle method from Quagga
-    return new Promise((resolve, reject) => {
-      Quagga.decodeSingle(DECODER_CONFIG, result => {
-        if (!result || typeof result.codeResult === 'undefined') {
-          reject('File Cannot be Decode, Please Try a Valid Barcode;');
-        }
-        resolve(result.codeResult.code);
-      });
-    });
-  }
-
   private setLiveStreamConfig() {
     DECODER_LIVE_CONFIG.inputStream = {
       type: 'LiveStream',
@@ -62,7 +49,7 @@ export class BarcodeDecoderService {
             x: 0,
             y: 1,
           }, drawingCtx, {
-            color: '#FF71B5',
+            color: '#66ff66',
             lineWidth: 2,
           });
         });

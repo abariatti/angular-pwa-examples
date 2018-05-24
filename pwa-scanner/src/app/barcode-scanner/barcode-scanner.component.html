@@ -1,0 +1,14 @@
+<mat-card>
+  <p>Notice: You must allow to use your webcam. This Option only works on IE11+ and may not work with Android browser
+    older version. Alternatively use upload file option.</p>
+
+  <div class="show__sm" *ngIf="lastResult">
+    <p>Your Code is</p>
+    <p>{{ lastResult || async }}'</p>
+    <p *ngIf="error">{{ error }}</p>
+  </div>
+
+  <div id="interactive" class="viewport" #interactive></div>
+</mat-card>
+
+

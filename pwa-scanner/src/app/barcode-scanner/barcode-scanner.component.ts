@@ -1,15 +1,13 @@
-import { Component, OnInit, OnDestroy, ViewChild, AfterContentInit } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, AfterContentInit } from '@angular/core';
 import { BarcodeDecoderService } from '../../services/barcode-decoder.service';
-import { BarcodeValidatorService } from '../../services/barcode-validator.service';
 import { Subject } from 'rxjs';
 
-
 @Component({
-  selector: 'app-media-stream',
-  templateUrl: './media-stream.component.html',
-  styleUrls: ['./media-stream.component.scss'],
+  selector: 'app-barcode-scanner',
+  templateUrl: './barcode-scanner.component.html',
+  styleUrls: ['./barcode-scanner.component.scss']
 })
-export class MediaStreamComponent implements OnInit, OnDestroy, AfterContentInit {
+export class BarcodeScannerComponent implements OnInit, OnDestroy, AfterContentInit {
 
   lastResult: any;
   message: any;
@@ -19,7 +17,7 @@ export class MediaStreamComponent implements OnInit, OnDestroy, AfterContentInit
 
   @ViewChild('interactive') interactive;
 
-  constructor(private decoderService: BarcodeDecoderService, private barcodeValidator: BarcodeValidatorService) {}
+  constructor(private decoderService: BarcodeDecoderService) {}
 
   ngOnInit() {
 
@@ -34,15 +32,6 @@ export class MediaStreamComponent implements OnInit, OnDestroy, AfterContentInit
         this.code$.next(code);
       })
       .catch((err) => this.error = `Something Wrong: ${err}`);
-
-    this.barcodeValidator
-      .doSearchbyCode(this.code$)
-      .subscribe(
-        res => this.message = res,
-        err => {
-          this.message = `An Error! ${err.json().error}`;
-        },
-      );
   }
 
   ngAfterContentInit() {
@@ -52,5 +41,6 @@ export class MediaStreamComponent implements OnInit, OnDestroy, AfterContentInit
   ngOnDestroy() {
     this.decoderService.onDecodeStop();
   }
+
 
 }
