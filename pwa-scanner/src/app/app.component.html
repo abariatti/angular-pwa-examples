@@ -1,3 +1,39 @@
-<div>
-  <router-outlet></router-outlet>
-</div>
+<mat-toolbar color="primary">
+
+  <button mat-icon-button (click)="snav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span>{{ 'TITLE' }}</span>
+
+  <span fxFlex></span>
+
+</mat-toolbar>
+
+<mat-sidenav-container fxLayout="row" fxFlex>
+
+  <mat-sidenav #snav mode="push" closed>
+
+    <mat-nav-list>
+
+      <mat-list-item routerLink="/qr-scanner" routerLinkActive="active">
+        <mat-icon>scanner</mat-icon>
+        <span>qr scan </span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/barcode-scanner" routerLinkActive="active">
+        <mat-icon>scanner</mat-icon>
+        <span>barcode scan </span>
+      </mat-list-item>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="main-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
