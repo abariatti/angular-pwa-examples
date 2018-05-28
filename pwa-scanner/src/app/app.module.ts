@@ -1,36 +1,39 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ProductService } from './services/product.service';
+import { AlertService } from './services/alert.service';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppMaterialModule } from './modules/app-material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BarcodeValidatorService } from '../services/barcode-validator.service';
-import { BarcodeDecoderService } from '../services/barcode-decoder.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
-import { BarcodeScannerComponent } from './barcode-scanner/barcode-scanner.component';
-import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { ParseInterceptor } from './helpers/parse.interceptor';
+import { AuthenticationService } from './services/authentication.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QrScannerComponent,
-    BarcodeScannerComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     AppRoutingModule,
     HttpClientModule,
     AppMaterialModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
-    ZXingScannerModule.forRoot()
   ],
   providers: [
-    BarcodeValidatorService,
-    BarcodeDecoderService
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ParseInterceptor,
+      multi: true
+    },
+    AlertService,
+    AuthenticationService,
   ],
   bootstrap: [AppComponent]
 })

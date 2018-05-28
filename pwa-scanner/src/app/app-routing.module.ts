@@ -1,12 +1,10 @@
-import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
-import { BarcodeScannerComponent } from './barcode-scanner/barcode-scanner.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PagesModule } from './pages/pages.module';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/qr-scanner', pathMatch: 'full' },
-  { path: 'barcode-scanner', component: BarcodeScannerComponent },
-  { path: 'qr-scanner', component: QrScannerComponent },
+  { path: '', redirectTo: '/pages/home', pathMatch: 'full' },
+  { path: 'pages', loadChildren: './pages/pages.module#PagesModule' }
 ];
 
 @NgModule({

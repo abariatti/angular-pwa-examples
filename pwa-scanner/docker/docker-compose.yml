@@ -1,0 +1,19 @@
+mongo-parse-server:
+    image: mongo
+parse-server:
+    image: yongjhih/parse-server
+    links:
+        - mongo-parse-server:mongo
+    environment:
+        - APP_ID=PWA_SCANNER_APP
+        - MASTER_KEY=95ec3e97-61fc-48d3-8aad-cd97c5452215
+        - FILE_KEY=cb5cd8e6-1e6d-4a89-9851-a314b3da5afb
+    ports:
+        - 1337:1337
+parse-dashboard:
+    image: yongjhih/parse-dashboard
+    environment:
+        - PARSE_DASHBOARD_CONFIG={"apps":[{"appId":"PWA_SCANNER_APP","serverURL":"http://localhost:1337/parse","masterKey":"95ec3e97-61fc-48d3-8aad-cd97c5452215","appName":"PWA_SCANNER"}],"users":[{"user":"foo","pass":"bar"}]}
+        - PARSE_DASHBOARD_ALLOW_INSECURE_HTTP=1
+    ports:
+        - 4040:4040

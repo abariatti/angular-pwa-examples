@@ -15,25 +15,3 @@ app-root {
   flex-direction: column;
   height: 100%;
 }
-
-
-.viewport > canvas {
-  position: inherit;
-  width: 100% !important;
-  z-index: 99;
-}
-
-.viewport > video {
-  width: 100% !important;
-}
-
-.viewport {
-  position: relative;
-}
-
-
-// video {
-//   position: inherit;
-//   width: 100%;
-//   height: auto;
-// }

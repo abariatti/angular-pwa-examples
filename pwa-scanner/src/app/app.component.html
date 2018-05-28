@@ -8,6 +8,14 @@
 
   <span fxFlex></span>
 
+  <button mat-icon-button [matMenuTriggerFor]="themeMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <mat-menu #themeMenu x-position="after">
+    <button routerLink="/pages/profile" mat-menu-item>Profile</button>
+  </mat-menu>
+
 </mat-toolbar>
 
 <mat-sidenav-container fxLayout="row" fxFlex>
@@ -16,14 +24,19 @@
 
     <mat-nav-list>
 
-      <mat-list-item routerLink="/qr-scanner" routerLinkActive="active">
-        <mat-icon>scanner</mat-icon>
-        <span>qr scan </span>
+      <mat-list-item routerLink="/pages/home" routerLinkActive="active">
+        <mat-icon>home</mat-icon>
+        <span>Home </span>
       </mat-list-item>
 
-      <mat-list-item routerLink="/barcode-scanner" routerLinkActive="active">
+      <mat-list-item routerLink="/pages/products" routerLinkActive="active">
+        <mat-icon>local_grocery_store</mat-icon>
+        <span>Products </span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/pages/qr-scanner" routerLinkActive="active">
         <mat-icon>scanner</mat-icon>
-        <span>barcode scan </span>
+        <span>qr scan </span>
       </mat-list-item>
 
     </mat-nav-list>
