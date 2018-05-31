@@ -15,6 +15,7 @@ import { AppMaterialModule } from '../modules/app-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     AppMaterialModule,
     ZXingScannerModule.forRoot(),
-    PagesRoutingModule
+    PagesRoutingModule,
+    FlexLayoutModule
   ],
   declarations: [
     HomeComponent,

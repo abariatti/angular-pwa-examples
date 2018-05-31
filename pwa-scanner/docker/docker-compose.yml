@@ -8,6 +8,7 @@ parse-server:
         - APP_ID=PWA_SCANNER_APP
         - MASTER_KEY=95ec3e97-61fc-48d3-8aad-cd97c5452215
         - FILE_KEY=cb5cd8e6-1e6d-4a89-9851-a314b3da5afb
+        - REST_API_KEY=257931e1-c45b-48ef-8871-c4f1ece6a7af
     ports:
         - 1337:1337
 parse-dashboard:

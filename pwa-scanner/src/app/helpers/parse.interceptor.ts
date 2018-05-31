@@ -14,7 +14,7 @@ export class ParseInterceptor implements HttpInterceptor {
 
     // add authorization header with jwt token if available
     const applicationId = 'ANGULAR_MATERIAL_STARTER';
-    const restApiKey = undefined;
+    const restApiKey = '257931e1-c45b-48ef-8871-c4f1ece6a7af';
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
     request = request.clone({
